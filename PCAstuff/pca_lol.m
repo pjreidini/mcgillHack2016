@@ -6,7 +6,7 @@ clc;clear all;close all;
 % c4 = load('conc250.txt');
 
 mydir = pwd;
-myf = dir(fullfile(mydir,'PTS8*.txt'))
+myf = dir(fullfile(mydir,'TS4*.txt'))
 indf = 5; %length(myf)
 
 for i = 1:indf,
@@ -119,7 +119,7 @@ for i =1:length(eigpca);
     csum = csum +eigpca(i);
     eigcs(i) = csum;
 end
-figure;plot(1:length(eigpca),eigcs/eigsum);
+% figure;plot(1:length(eigpca),eigcs/eigsum,'x--');
     
 
 
@@ -150,4 +150,13 @@ for i = 1:col
     figure;imagesc(reshape(f(i,:),[dim1 dim1]))
 end
 % 
-
+figure;
+plot(1:length(eigpca),-eigpca,'x--')
+title('skree plot')
+figure;plot(1:length(eigpca),eigcs/eigsum,'x--');
+title('cumsum of eigenvalues')
+x = 1:0.1:10,
+figure
+plot(x,1-1./x);
+title('example of a good eigen-cumsum');
+% figure;
